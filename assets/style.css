@@ -1,0 +1,206 @@
+/* =========================================================
+   Personal Academic Site — Minimal Scholarly Style
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --text:       #1a1a1a;
+  --text-soft:  #4a4a4a;
+  --text-muted: #888;
+  --bg:         #fdfdfb;
+  --bg-soft:    #f5f4ef;
+  --rule:       #d8d5cc;
+  --accent:     #8b2a2a;
+  --accent-bg:  #f9efef;
+  --serif:      'Crimson Pro', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --mono:       'JetBrains Mono', 'SF Mono', Menlo, monospace;
+  --max-w:      720px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 28px; }
+
+/* ---------- Top Nav ---------- */
+header.site-header {
+  border-bottom: 1px solid var(--rule);
+  padding: 22px 0 18px;
+  margin-bottom: 56px;
+  background: var(--bg);
+}
+.site-header .wrap {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 24px; flex-wrap: wrap;
+}
+.site-title {
+  font-weight: 600; font-size: 1.05rem; letter-spacing: 0.02em;
+  text-decoration: none; color: var(--text); font-variant: small-caps;
+  border-bottom: none;
+}
+.site-title em {
+  font-style: italic; font-variant: normal; color: var(--text-muted);
+  font-weight: 400; margin-left: 8px;
+}
+nav.primary { display: flex; gap: 22px; font-size: 0.95rem; flex-wrap: wrap; }
+nav.primary a {
+  color: var(--text-soft); text-decoration: none;
+  border-bottom: 1px solid transparent; padding-bottom: 2px;
+  transition: color .15s, border-color .15s;
+}
+nav.primary a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+nav.primary a.active { color: var(--text); border-bottom-color: var(--text); }
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4 {
+  font-family: var(--serif); font-weight: 600;
+  line-height: 1.25; color: var(--text);
+}
+h1 { font-size: 2.2rem; margin: 0 0 8px; letter-spacing: -0.01em; }
+h1 + .subtitle {
+  color: var(--text-muted); font-style: italic;
+  font-size: 1.1rem; margin: 0 0 40px;
+}
+h2 {
+  font-size: 1.35rem; margin: 56px 0 14px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--rule);
+  font-variant: small-caps; letter-spacing: 0.04em; font-weight: 500;
+}
+h3 { font-size: 1.1rem; margin: 32px 0 10px; font-style: italic; font-weight: 500; }
+
+p { margin: 0 0 1em; }
+
+a {
+  color: var(--accent); text-decoration: none;
+  border-bottom: 1px solid rgba(139,42,42,0.25); transition: border-color .15s;
+}
+a:hover { border-bottom-color: var(--accent); }
+
+ul, ol { padding-left: 1.3em; }
+li { margin-bottom: 0.5em; }
+
+blockquote {
+  margin: 24px 0; padding: 4px 20px;
+  border-left: 3px solid var(--rule);
+  color: var(--text-soft); font-style: italic;
+}
+
+code, kbd, samp {
+  font-family: var(--mono); font-size: 0.9em;
+  background: var(--bg-soft); padding: 2px 6px; border-radius: 3px;
+}
+
+hr { border: 0; border-top: 1px solid var(--rule); margin: 48px 0; }
+
+/* ---------- Home: bio block ---------- */
+.bio {
+  display: grid; grid-template-columns: 140px 1fr;
+  gap: 36px; align-items: start; margin-bottom: 48px;
+}
+.portrait {
+  width: 140px; height: 140px; object-fit: cover;
+  border-radius: 2px; filter: grayscale(15%);
+  background: #e8e5dc;
+  display: flex; align-items: center; justify-content: center;
+  color: #aaa; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em;
+}
+.bio .who h1 { margin-top: 0; }
+.bio .affil { color: var(--text-muted); font-style: italic; margin-bottom: 14px; }
+.bio .links {
+  display: flex; flex-wrap: wrap; gap: 14px;
+  font-size: 0.95rem; margin-top: 8px;
+}
+.bio .links a { color: var(--text-soft); border-bottom: 1px dotted var(--text-muted); }
+.bio .links a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+@media (max-width: 600px) {
+  .bio { grid-template-columns: 1fr; }
+  .portrait { width: 110px; height: 110px; }
+}
+
+/* ---------- Reading list entries ---------- */
+.entry {
+  margin: 18px 0 22px; padding-left: 14px;
+  border-left: 2px solid transparent;
+  transition: border-color .2s;
+}
+.entry:hover { border-left-color: var(--accent); }
+.entry .authors { font-size: 0.95rem; color: var(--text-soft); }
+.entry .year { color: var(--text-muted); }
+.entry .title {
+  display: block; font-weight: 500; font-style: italic;
+  margin: 2px 0; color: var(--text);
+}
+.entry .venue {
+  font-size: 0.9rem; color: var(--text-muted);
+  font-variant: small-caps; letter-spacing: 0.04em;
+}
+.entry .tag {
+  display: inline-block; padding: 1px 8px; margin-right: 4px;
+  background: var(--bg-soft); border-radius: 10px;
+  font-family: var(--mono); font-size: 0.75rem; color: var(--text-soft);
+}
+.entry .note {
+  margin-top: 6px; font-size: 0.95rem;
+  color: var(--text-soft);
+}
+.entry .links-row { font-size: 0.85rem; margin-top: 4px; }
+.entry .links-row a {
+  color: var(--text-soft); margin-right: 12px;
+  border-bottom: 1px dotted var(--text-muted);
+}
+
+/* ---------- Notes (blog) listing ---------- */
+.note-list { list-style: none; padding: 0; }
+.note-list li {
+  display: grid; grid-template-columns: 110px 1fr;
+  gap: 18px; padding: 14px 0;
+  border-bottom: 1px solid var(--rule); align-items: baseline;
+}
+.note-list .date {
+  font-family: var(--mono); font-size: 0.85rem; color: var(--text-muted);
+}
+.note-list .post-title { font-size: 1.05rem; }
+.note-list .post-title a { color: var(--text); border-bottom: none; }
+.note-list .post-title a:hover { color: var(--accent); }
+.note-list .excerpt {
+  font-size: 0.92rem; color: var(--text-soft); margin-top: 2px;
+}
+
+@media (max-width: 600px) {
+  .note-list li { grid-template-columns: 1fr; gap: 4px; }
+}
+
+/* ---------- Footer ---------- */
+footer.site-footer {
+  margin-top: 96px; padding: 24px 0 36px;
+  border-top: 1px solid var(--rule);
+  font-size: 0.85rem; color: var(--text-muted);
+}
+footer.site-footer .wrap {
+  display: flex; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+}
+footer a { color: var(--text-muted); border-bottom: 1px dotted var(--text-muted); }
+footer a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ---------- Misc ---------- */
+::selection { background: var(--accent-bg); color: var(--accent); }
+.kicker {
+  font-family: var(--mono); font-size: 0.78rem;
+  color: var(--text-muted); letter-spacing: 0.12em;
+  text-transform: uppercase; margin-bottom: 8px;
+}
+.intro-text { font-size: 1.05rem; }
